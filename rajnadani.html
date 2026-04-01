@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Rajnandani 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(135deg, #ffe6f0, #ffd6e0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+.envelope {
+  width: 320px;
+  height: 200px;
+  background: #ff4d6d;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 10;
+}
+
+.slide {
+  display: none;
+  text-align: center;
+  animation: fade 0.8s ease;
+  max-width: 320px;
+  z-index: 10;
+}
+
+.active { display: block; }
+
+h1 { color: #ff3366; }
+p { font-size: 17px; }
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 20px;
+  margin: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#yesBtn { background: #ff4d6d; color: white; }
+
+#noBtn {
+  background: gray;
+  color: white;
+  position: absolute;
+}
+
+.cartoon { font-size: 60px; }
+
+@keyframes fade {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating Hearts -->
+<script>
+for (let i = 0; i < 30; i++) {
+  let heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '💖';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+  document.body.appendChild(heart);
+}
+</script>
+
+<!-- ✅ YOUR REAL VOICE -->
+<audio id="loveAudio" src="I love you voice.m4a"></audio>
+
+<div class="envelope" id="envelope" onclick="openLetter()">
+  💌 Dear Rajnandani 💖
+</div>
+
+<div id="slidesContainer" style="display:none;">
+
+<div class="slide active">
+  <h1>Hi Rajnandani 💖</h1>
+  <div class="cartoon">👦❤️👧</div>
+  <p>I made something special for you...</p>
+  <button class="btn" onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide">
+  <h1>Why I Love You 💕</h1>
+  <p>Your smile makes my whole day brighter ☀️</p>
+  <p>You are my happiness and peace 🌸</p>
+  <button class="btn" onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide">
+  <h1>What I Like Most 😍</h1>
+  <p>Your cute talks and caring nature 💖</p>
+  <p>The way you understand me without words 🥺</p>
+  <button class="btn" onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide">
+  <h1>Where I Want To Go With You 🌍</h1>
+  <p>Long drives 🚗, beaches 🏖️, and mountains ⛰️</p>
+  <p>Anywhere… as long as it’s with you 💑</p>
+  <button class="btn" onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide">
+  <h1>Will You Marry Me? 💍</h1>
+  <div class="cartoon">💑✨</div>
+  <button class="btn" id="yesBtn" onclick="sayYes()">Yes 💖</button>
+  <button class="btn" id="noBtn" onmouseover="moveNo()">No 😜</button>
+</div>
+
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+
+function openLetter() {
+  document.getElementById('envelope').style.display = 'none';
+  document.getElementById('slidesContainer').style.display = 'block';
+}
+
+function nextSlide() {
+  slides[current].classList.remove('active');
+  current++;
+  slides[current].classList.add('active');
+}
+
+function moveNo() {
+  const btn = document.getElementById('noBtn');
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  btn.style.left = x + 'px';
+  btn.style.top = y + 'px';
+}
+
+function playLove() {
+  document.getElementById('loveAudio').play();
+}
+
+function sayYes() {
+  document.body.innerHTML = `
+    <h1 style="color:#ff3366; text-align:center;">For You 💖</h1>
+    <p style="text-align:center; font-size:22px;">I Love You Forever Rajnandani 😘</p>
+    <div style="text-align:center; font-size:50px;">💑💖✨</div>
+    <div style="text-align:center; margin-top:20px;">
+      <button onclick="playLove()" style="padding:10px 20px; border:none; border-radius:20px; background:#ff4d6d; color:white;">🎧 Listen My Voice</button>
+    </div>
+  `;
+
+  // 🔥 AUTO PLAY YOUR VOICE
+  setTimeout(() => {
+    playLove();
+  }, 800);
+}
+</script>
+
+</body>
+</html>
